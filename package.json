@@ -1,0 +1,28 @@
+{
+  "name": "websmith.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbruno46/websmith.js.git"
+  },
+  "keywords": [],
+  "author": "Mattia Bruno",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/mbruno46/websmith.js/issues"
+  },
+  "homepage": "https://github.com/mbruno46/websmith.js#readme",
+  "dependencies": {
+    "eta": "^1.12.1",
+    "front-matter": "^4.0.2",
+    "marked": "^2.0.1"
+  }
+}

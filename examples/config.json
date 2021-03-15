@@ -1,0 +1,11 @@
+{
+  "name": "Example",
+  "build": "./public",
+  "pages": ["index.md","page.md"],
+  "view": "./views",
+  "css": ["bootstrap.min.css","custom.css"],
+  "navbar": [
+    ["Home", "index.html"],
+    ["More", "page.html"]
+  ]
+}
