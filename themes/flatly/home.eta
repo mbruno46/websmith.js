@@ -5,7 +5,7 @@
   <% if(it.logo === undefined) { %>
   </h1>
   <% } else { %>
-  <img src="<%= it.logo %>" style="height: 100%"></h1>
+  <img src="<%= it.logo %>" style="height: 1em;"></h1>
   <% } %>
   <p class="lead"><%= it.desc %></p>
 </div>
