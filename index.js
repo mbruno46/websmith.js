@@ -20,7 +20,7 @@ eta.configure({
 function add_css() {
   var out = '';
   config.css.forEach(file => {
-    let html = eta.render(`<link rel="stylesheet" href="<%= it.css %>">`,{css: path.join(config.static,file)});
+    let html = eta.render(`<link rel="stylesheet" href="./<%= it.css %>">`,{css: path.join(config.static,file)});
     out += html + '\n';
   });
   return out;

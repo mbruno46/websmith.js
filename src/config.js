@@ -26,7 +26,7 @@ function init_config(conf_file) {
   mkdir(config.build_dir);
 
   if (!('static' in config)) {
-    config.static = './_static';
+    config.static = '_static';
   }
   config.static_src = path.resolve(path.join(config.theme, config.static));
   config.static_dst = path.join(config.build_dir, config.static);
