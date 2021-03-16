@@ -26,7 +26,8 @@ runs:
     - name: Set env vars
       run: |
         echo "REMOTE=https://${{ github.actor }}:${{ github.token }}@github.com/${{ inputs.repository }}.git" >> $GITHUB_ENV
-
+      shell: bash
+      
     - name: Install Node.js, npm
       uses: actions/setup-node@v1
       with:
@@ -40,10 +41,12 @@ runs:
     - name: Install dependencies
       run: |
         npm install
+      shell: bash
 
     - name: Build website
       run: |
         node index.js ${{ inputs.config }}
+      shell: bash
 
     - name: Publish
       run: |
