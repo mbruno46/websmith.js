@@ -59,6 +59,7 @@ text, like so
 ---
 title: TITLE
 desc: A catch phrase
+logo: _images/logo.png
 ---
 
 # Section title
@@ -66,6 +67,7 @@ desc: A catch phrase
 Section text goes here.
 ```
 
-The first two fields, `title` and `desc`, are used in the home page of every theme
-and define a catching title and description for the website. Note that the description
-is sometimes rendered with a different font.
+The first three fields, `title`, `desc` and `logo`, are used in the home page of every theme
+and define a catching title and description for the website, together with a logo.
+Note that the description is sometimes rendered with a different font.
+While `title` and `desc` are mandatory, `logo` is optional.
