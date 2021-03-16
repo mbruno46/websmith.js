@@ -31,12 +31,14 @@ runs:
     - name: 'Checkout websmith.js and install dependencies'
       run: |
         git clone https://github.com/mbruno46/websmith.js.git
+        cd websmith.js
         npm install
+        npm list
       shell: bash
 
     - name: 'Build website'
       run: |
-        node index.js ${{ inputs.config }}
+        node websmith.js/index.js ${{ inputs.config }}
       shell: bash
 
     - name: 'Publish'
