@@ -25,7 +25,12 @@ function init_config(conf_file) {
   config.build_dir = path.resolve(path.join(config.dir, config.build));
   mkdir(config.build_dir);
 
-  config.theme = path.resolve(path.join(config.dir, config.theme));
+  if ('theme_path' in config) {
+    config.theme = path.resolve(path.join(config.theme_path, config.theme));    
+  }
+  else {
+    config.theme = path.resolve(path.join(__dirname, '../themes', config.theme));
+  }
 
   if (!('static' in config)) {
     config.static = '_static';
