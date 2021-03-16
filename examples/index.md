@@ -3,6 +3,10 @@ title: websmith.js
 desc: A minimalistic static website generator based on Node.js
 ---
 
+<img src="./_images/image.png" alt="Smith" style="width: 100%;">
+
+***
+
 - **Source code**: [https://github.com/mbruno46/websmith.js/](https://github.com/mbruno46/websmith.js/)
 - **Bug reports** [https://github.com/mbruno46/websmith.js/issues](https://github.com/mbruno46/websmith.js/issues)
 
@@ -15,11 +19,15 @@ using
 git clone https://github.com/mbruno46/websmith.js.git
 ```
 
-To generate this documentation check the `examples` directory and type
+To generate this documentation check the
+[examples](https://github.com/mbruno46/websmith.js/examples) directory and type
 
 ```bash
 cd websmith.js
 node index.js ./examples/config.json
 ```
 
-To run this `Node.js` must be installed in the system.
+<div class="alert alert-dismissible alert-warning">
+<h4 class="alert-heading">Warning!</h4>
+Node.js must be installed in the system.
+</div>

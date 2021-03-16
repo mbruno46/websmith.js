@@ -58,6 +58,19 @@ function init_config(conf_file) {
 
   if (!('footer' in config)) {config.footer = '';}
 
+  if (!('images' in config)) {config.images = '_images';}
+  let img_src = path.resolve(path.join(config.dir, config.images));
+  let img_dst = path.join(config.build_dir, config.images);
+  mkdir(img_dst);
+  if (fs.existsSync(img_src)) {
+    fs.readdirSync(img_src).forEach(file => {
+      fs.copyFile(path.join(img_src, file), path.join(img_dst, file), (err) => {
+        if (err) throw err;
+        console.log(`File ${file} copied to ${img_dst}`);
+      });
+    });
+  }
+
   return config;
 }
 
