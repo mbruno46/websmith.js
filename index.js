@@ -3,6 +3,7 @@ var path = require("path")
 const {init_config} = require("./src/config.js");
 const {parse_md} = require("./src/markdown.js");
 const fs = require('fs');
+const pretty = require('pretty');
 
 config = init_config(process.argv[2]);
 
@@ -53,7 +54,11 @@ config.pages.forEach(page => {
 
   let html = eta.render(`<% layout('${page.layout}') %> \n<%~ it.body %>`, opts);
 
-  html = html.replace('<table>','<table class="table table-hover">')
+  // to be improved using marked
+  html = html.replace('<table>','<table class="table table-hover">');
+
+  html = pretty(html);
+
   fs.writeFile(path.join(config.build_dir,page.html), html, (err) => {
     if (err) throw err;
     console.log(`The page ${page.html} has been generated and saved`);
