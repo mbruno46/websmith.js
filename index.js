@@ -46,7 +46,8 @@ config.pages.forEach(page => {
   var data = parse_md(path.join(config.dir, page.md));
 
   var opts = {name: config.name, head: add_css(), body: data.body,
-    navbar: {items: navbar_items(page.html)}, footer: config.footer};
+    navbar: {items: navbar_items(page.html)},
+    footer: config.footer + ` Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.1.1`};
 
   Object.keys(data.attributes).forEach(key => {
     opts[key] = data.attributes[key];
