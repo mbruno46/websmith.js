@@ -23,32 +23,23 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set env vars
+    - name: 'Set env vars'
       run: |
         echo "REMOTE=https://${{ github.actor }}:${{ github.token }}@github.com/${{ inputs.repository }}.git" >> $GITHUB_ENV
       shell: bash
-      
-    - name: Install Node.js, npm
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11
 
-    - name: Checkout websmith.js
-      uses: actions/checkout@v2
-      with:
-        repository: mbruno46/websmith.js
-
-    - name: Install dependencies
+    - name: 'Checkout websmith.js and install dependencies'
       run: |
+        git clone https://github.com/mbruno46/websmith.js.git
         npm install
       shell: bash
 
-    - name: Build website
+    - name: 'Build website'
       run: |
         node index.js ${{ inputs.config }}
       shell: bash
 
-    - name: Publish
+    - name: 'Publish'
       run: |
         cd ${{ inputs.build }}
         git init
