@@ -12,27 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Node.js, npm
-        uses: actions/setup-node@v1
+        uses: mbruno46/websmith.js@main
         with:
-          node-version: 11
-
-      - name: Install dependecies
-        run: |
-          npm install
-
-      - name: Build website
-        run: |
-          node index.js ./examples/config.json
-
-      - name: Publish
-        run: |
-          cd doc
-          git init
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
-          git add .
-          git commit -m 'publishing documentation'
-          git remote add origin https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git
-          git config --global --list
-          git push --force origin master:doc
-        shell: bash
+          config: './examples/config.json'
+          path: './doc'

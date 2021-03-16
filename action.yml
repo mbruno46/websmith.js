@@ -1,0 +1,59 @@
+name: 'websmith.js'
+description: 'Deploy HTML websites generated using websmith.js'
+inputs:
+  repository:
+    description: 'Repository name with owner, e.g. mbruno46/websmith.js'
+    default: ${{ github.repository }}
+  ref:
+    description: >
+      The branch, tag or SHA to checkout. When checking out the repository that
+      triggered a workflow, this defaults to the reference or SHA for that
+      event.  Otherwise, uses the default branch.
+  config:
+    description: 'Relative path in the repository with the config.json file'
+    required: true
+  build:
+    description: 'Relative path in the repository of the build directory'
+    required: true
+  doc-branch:
+    description: 'Target branch for documentation deployment'
+    required: true
+    default: 'gh-pages'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set env vars
+      run: |
+        echo "REMOTE=https://${{ github.actor }}:${{ github.token }}@github.com/${{ inputs.repository }}.git" >> $GITHUB_ENV
+
+    - name: Install Node.js, npm
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11
+
+    - name: Checkout websmith.js
+      uses: actions/checkout@v2
+      with:
+        repository: mbruno46/websmith.js
+
+    - name: Install dependencies
+      run: |
+        npm install
+
+    - name: Build website
+      run: |
+        node index.js ${{ inputs.config }}
+
+    - name: Publish
+      run: |
+        cd ${{ inputs.build }}
+        git init
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+        git config --global user.name "${{ github.actor }}"
+        git add .
+        git commit -m '[websmith.js] publishing website'
+        git remote add origin ${REMOTE}
+        git config --global --list
+        git push --force origin master:${{ inputs.doc-branch }}
+      shell: bash
