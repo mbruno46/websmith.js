@@ -25,10 +25,12 @@ function init_config(conf_file) {
   config.build_dir = path.resolve(path.join(config.dir, config.build));
   mkdir(config.build_dir);
 
+  config.theme = path.resolve(path.join(config.dir, config.theme));
+
   if (!('static' in config)) {
     config.static = '_static';
   }
-  config.static_src = path.resolve(path.join(config.theme, config.static));
+  config.static_src = path.join(config.theme, config.static);
   config.static_dst = path.join(config.build_dir, config.static);
   mkdir(config.static_dst);
 

@@ -1,7 +1,7 @@
 {
   "name": "websmith.js",
   "build": "../doc",
-  "theme": "./themes/flatly",
+  "theme": "../themes/flatly",
   "pages": [
     {
       "file": "index.md",
