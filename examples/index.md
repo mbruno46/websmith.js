@@ -1,5 +1,6 @@
 ---
 title: Home page
+desc: Some catch phrase here
 ---
 
 # This is the Home Page

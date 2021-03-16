@@ -18,6 +18,7 @@ function mkdir(dirname) {
 function init_config(conf_file) {
   config = JSON.parse(fs.readFileSync(conf_file));
   config.dir = path.resolve(path.dirname(conf_file));
+
   if (!('build' in config)) {
     config.build = './public';
   }
@@ -25,19 +26,39 @@ function init_config(conf_file) {
   mkdir(config.build_dir);
 
   if (!('static' in config)) {
-    config.static = './_static';
+    config.static = '_static';
   }
-  config.static_src = path.resolve(path.join(config.dir, config.static));
+  config.static_src = path.resolve(path.join(config.theme, config.static));
   config.static_dst = path.join(config.build_dir, config.static);
   mkdir(config.static_dst);
 
-  config.css.forEach(f => {
-    fs.copyFile(path.join(config.static_src, f), path.join(config.static_dst, f), (err) => {
+  if (!('css' in config)) {
+    config.css = []
+  }
+
+  fs.readdirSync(config.static_src).forEach(file => {
+    let ext = path.extname(file);
+    if (ext=='.css') {config.css.push(file);}
+    fs.copyFile(path.join(config.static_src, file), path.join(config.static_dst, file), (err) => {
       if (err) throw err;
-      console.log(`${f} copied`);
+      console.log(`File ${file} copied to ${config.static}`);
     });
   });
 
+  config.pages.forEach(page => {
+    if (!('html' in page)) {
+      page.html = page.file + '.html';
+    }
+    if (!('md' in page)) {
+      page.md = page.file + '.md';
+    }
+    if (!('layout' in page)) {
+      page.layout = 'layout';
+    }
+  });
+
+  if (!('footer' in config)) {config.footer = '';}
+  
   return config;
 }
 

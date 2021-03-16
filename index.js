@@ -10,7 +10,7 @@ config = init_config(process.argv[2]);
 eta.configure({
   // This tells Eta to look for templates
   // In the /views directory
-  views: path.join(config.dir, "views")
+  views: path.resolve(config.theme)
 })
 
 // Eta assumes the .eta extension if you don't specify an extension
@@ -18,7 +18,7 @@ eta.configure({
 // renderFile("/template"), etc.
 
 function add_css() {
-  var out = ''
+  var out = '';
   config.css.forEach(file => {
     let html = eta.render(`<link rel="stylesheet" href="<%= it.css %>">`,{css: path.join(config.static,file)});
     out += html + '\n';
@@ -31,31 +31,31 @@ function md2html(fname) {return path.basename(fname,'.md') + '.html';}
 function navbar_items(current) {
   var out = ''
   navbar = [];
-  config.navbar.forEach(item => {
-    let page = item;
-
-    out += eta.render(`<li class="nav-item"><a class="nav-link ${(current==item[1] ? 'active' : '')}" href="<%= it.link %>"><%= it.name %></a></li>`,
-      {name: item[0], link: item[1]}) + '\n';
+  config.pages.forEach(item => {
+    if ('navbar' in item) {
+      out += eta.render(`<li class="nav-item"><a class="nav-link ${(current==item.html ? 'active' : '')}" href="<%= it.link %>"><%= it.name %></a></li>`,
+        {name: item.navbar, link: item.html}) + '\n';
+    }
   });
   return out;
 }
 
 
 config.pages.forEach(page => {
-  let outname = md2html(page);
-  var data = parse_md(path.join(config.dir, page));
+  var data = parse_md(path.join(config.dir, page.md));
 
-  let html = eta.render(
-    `<% layout('./layout') %>
+  var opts = {name: config.name, head: add_css(), body: data.body,
+    navbar: {items: navbar_items(page.html)}, footer: config.footer};
 
-    <div class="row">
-      <%~ it.body %>
-    </div>`, {head: add_css(), body: data.body, navbar: {
-      brand: config.name, items: navbar_items(outname)
-    }});
+  Object.keys(data.attributes).forEach(key => {
+    opts[key] = data.attributes[key];
+  });
 
-  fs.writeFile(path.join(config.build_dir,outname), html, (err) => {
+  let html = eta.render(`<% layout('${page.layout}') %> \n<%~ it.body %>`, opts);
+
+  html = html.replace('<table>','<table class="table table-hover">')
+  fs.writeFile(path.join(config.build_dir,page.html), html, (err) => {
     if (err) throw err;
-    console.log('The file has been saved!');
+    console.log(`The page ${page.html} has been generated and saved`);
   });
 });

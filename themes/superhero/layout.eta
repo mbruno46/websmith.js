@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= it.name %></title>
     <%~ it.head %>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container"
-        <a class="navbar-brand" href="#"><%= it.navbar.brand %></a>
+      <div class="container">
+        <a class="navbar-brand" href="#"><%= it.name %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,13 +22,13 @@
       </div>
     </nav>
 
-    <div class="container"
+    <div class="container">
       <%~ it.body %>
     </div>
 
     <footer>
       <div class="container">
-        Copyright © Mattia Bruno 2021
+        <%= it.footer %> Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.1.0
       </div>
     </footer>
   </body>

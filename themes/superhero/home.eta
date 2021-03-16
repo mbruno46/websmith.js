@@ -1,0 +1,10 @@
+<% layout('./layout') %>
+
+<div class="page-header">
+  <h1><%= it.title %></h1>
+  <p class="lead"><%= it.desc %></p>
+</div>
+
+<div class="bs-docs-section clearfix">
+  <%~ it.body %>
+</div>
