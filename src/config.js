@@ -46,19 +46,18 @@ function init_config(conf_file) {
   });
 
   config.pages.forEach(page => {
+    let base = path.basename(page.file,'.md');
     if (!('html' in page)) {
-      page.html = page.file + '.html';
+      page.html = base + '.html';
     }
-    if (!('md' in page)) {
-      page.md = page.file + '.md';
-    }
+    page.md = base + '.md';
     if (!('layout' in page)) {
       page.layout = 'layout';
     }
   });
 
   if (!('footer' in config)) {config.footer = '';}
-  
+
   return config;
 }
 

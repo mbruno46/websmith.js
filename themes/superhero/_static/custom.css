@@ -1,6 +1,6 @@
 h1 {margin-top:2em}
 h2 {margin-top:1em}
-body{ height:100vh; margin:0; }
+body{ min-height:100vh; margin:0; }
 
 body{
   display:flex;
@@ -9,4 +9,7 @@ body{
 
 footer {
   margin-top:auto;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  text-align: right;
 }

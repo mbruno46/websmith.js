@@ -1,16 +1,16 @@
 {
-  "name": "Example",
-  "build": "./public",
+  "name": "websmith.js",
+  "build": "../doc",
   "theme": "./themes/superhero",
   "pages": [
     {
-      "file": "index",
+      "file": "index.md",
       "layout": "home",
       "navbar": "Home"
     },
     {
-      "file": "page",
-      "navbar": "More"
+      "file": "getstarted.md",
+      "navbar": "Get started"
     }
   ],
   "footer": "Copyright © 2021 Mattia Bruno."
