@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-              
+
       - name: Install Node.js, npm
         uses: actions/setup-node@v1
         with:
@@ -19,5 +19,5 @@ jobs:
       - name: Deploy website
         uses: mbruno46/websmith.js@main
         with:
-          config: './examples/config.json'
-          build: './doc'
+          config: './doc/config.json'
+          build: './doc/build'
