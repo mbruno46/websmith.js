@@ -1,9 +1,5 @@
----
-title: websmith.js
-desc: A minimalistic static website generator based on Node.js
----
 
-<img src="./_images/image.png" alt="Smith" style="width: 100%;">
+<img src="./assets/img/image.png" alt="Smith" style="width: 100%;">
 
 ***
 

@@ -38,7 +38,7 @@ runs:
 
     - name: 'Build website'
       run: |
-        node websmith.js/index.js ${{ inputs.config }}
+        node websmith.js/main.js ${{ inputs.config }}
       shell: bash
 
     - name: 'Publish'

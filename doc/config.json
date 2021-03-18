@@ -1,0 +1,31 @@
+{
+  "title": "websmith.js",
+  "build": "./build",
+  "assets": "./assets",
+  "navbar": {
+    "name": "websmith.js",
+    "items": [{
+      "link": "index.html",
+      "name": "Home"
+    },
+    {
+      "link": "getstarted.html",
+      "name": "Get Started"
+    }]
+  },
+  "layouts": "./layouts",
+  "pages": [
+    {
+      "name": "index.html",
+      "desc": "A minimalistic static website generator based on Node.js",
+      "body": "index.md",
+      "layout": "home"
+    },
+    {
+      "name": "getstarted.html",
+      "body": "getstarted.md",
+      "layout": "layout"
+    }
+  ],
+  "footer": "Copyright © 2021 Mattia Bruno."
+}
