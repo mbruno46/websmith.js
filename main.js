@@ -46,7 +46,7 @@ utils.mkdir(build);
 if (!('assets' in config)) {
   config.assets = './assets';
 }
-utils.rcopy(path.join(src,config.assets),path.join(build,config.assets));
+utils.rcopy(path.join(src,config.assets),path.join(build,path.basename(config.assets)));
 
 if (!('layouts' in config)) {
   config.layouts = './layouts'

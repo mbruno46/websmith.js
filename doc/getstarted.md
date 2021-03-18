@@ -1,73 +1,87 @@
 # Get started
 
-To get started with `websmith.js` you need two files
+To get started with `websmith.js` you need one file
 
  * `config.json`: configuration file used to generate the various webapges
- * `index.md`: a Markdown file with the content of your home page
 
-The configuration file tells the library what the basic structure of the website
-is going to look like.
+The configuration file tells the library what the basic structure and content
+of the website is going to be.
 
 ```javascript
 {
-  "name": "My awesome website",
-  "build": "./public",
-  "theme": "./themes/superhero",
+  "title": "my website",
+  "build": "./build",
+  "assets": "./themes/superhero/assets",
+  "navbar": {
+    "name": "My New Website",
+    "items": [{
+      "link": "index.html",
+      "name": "Home"
+    }]
+  },
+  "layouts": "./themes/superhero/layouts",
   "pages": [
     {
-      "file": "index.md",
-      "layout": "home",
-      "navbar": "Home"
-    },
-    {
-      "file": "page.md",
-      "navbar": "More"
+      "name": "index.html",
+      "desc": "Some catch phrase goes here",
+      "body": "The content of the body",
+      "layout": "home"
     }
   ],
-  "footer": "Copyright © 2021 Author. Or anything else."
+  "footer": "Copyright © year author."
 }
 ```
 
-In the example above, the program will try to locate two files, `index.md` and
-`page.md` that will serve as Markdown source files for two separate webpages.
-The fields `file` should contain a path relative to the location of the configuration
-file. For example, if a source file is located inside a directory called `./src/`,
-while the configuration file is at `./config.json`, then
+In this example above, we can see how `websmith.js` works:
+
+  * `build` specifies the build directory;
+
+  * `title` and `footer` are mandatory; if the title field is not present inside
+  one of the pages, the global title is used for every webpage;
+
+ * the assets contain the basic `.css` and `.js` files that define the style of
+ the webpage. The user can add images for examples to a subfolder called `img` and
+ load them in the Markdown source files; the program will copy the content in the build
+ directory;
+
+ * the layouts contain the structure of the webpage, and their content is filled
+ via the `body` field, which can be either a string of HTML, or a Markdown file
+ such as `index.md`;
+
+ * `navbar` defines the structure of the navigatio bar; each item must contain a
+ `link` to a webpage, and a `name` to be displayde forr it;
+
+ * webpages are created following the content of the `pages` field; for each
+ entry a name, body and layout must be specified;
+
+ * special layouts, such as `home` may require additional fields; for the home layout
+ the user can provide a description and logo;
+
+***
+
+## Custom templates
+
+Custom templates can be easily used by specifying the proper `assets` and `layouts`
+directories. They are based on the [ETA](https://eta.js.org) templating engine and
+each field defined in the template must be matched by the
+corresponding entry in the configure file
+
+```html
+  ...
+  <div class="page-header">
+    <img src="<%= it.logo %>" style="height: 1em;"></h1>
+  </div>
+  ...
+```
 
 ```javascript
-  ...
+{
   "pages": [
     ...
     {
-      "file": "src/page.md"
+      ...
+      "logo": "assets/img/logo.png"
     }
-  ],
+  ]
+}
 ```
-
-The option `navbar` tells the software to add this page to the navigation bar. If
-not present such page will not be accessible from the navigation bar and the user
-will have to provide the necessary link in one of the other pages.
-
-The option `layout` specifies which page layout should be used. For example,
-all themes have a special layout for the home page, called `home`. If not specified
-the basic layout is automatically chosen.
-
-The file `index.md` is divided in two parts: a front-matter header and a Markdown
-text, like so
-
-```Markdown
----
-title: TITLE
-desc: A catch phrase
-logo: _images/logo.png
----
-
-# Section title
-
-Section text goes here.
-```
-
-The first three fields, `title`, `desc` and `logo`, are used in the home page of every theme
-and define a catching title and description for the website, together with a logo.
-Note that the description is sometimes rendered with a different font.
-While `title` and `desc` are mandatory, `logo` is optional.
