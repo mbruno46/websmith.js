@@ -59,7 +59,7 @@ if (!('layouts' in config)) {
 eta.configure({views: src + '/' + config.layouts});
 
 config.pages.forEach(page => {
-  page.footer = config.footer + ` Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.1.1`;
+  page.footer = config.footer
   if (!('title' in page)) {
     page.title = config.title;
   }

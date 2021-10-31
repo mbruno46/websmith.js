@@ -14,7 +14,7 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
       <div class="container">
         <a class="navbar-brand" href="#"><%= it.navbar.name %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,9 +37,10 @@
       <%~ it.body %>
     </div>
 
-    <footer class="bg-dark">
+    <footer class="nav navbar-dark bg-primary">
       <div class="container">
         <%~ it.footer %>
+	<span>Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.1.1</span>
       </div>
     </footer>
 
