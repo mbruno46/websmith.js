@@ -44,9 +44,11 @@ build = path.resolve(path.join(src, config.build));
 utils.mkdir(build);
 
 if (!('assets' in config)) {
-  config.assets = './assets';
+  config.assets = ['./assets'];
 }
-utils.rcopy(path.join(src,config.assets),path.join(build,path.basename(config.assets)));
+config.assets.forEach(asset => {
+  utils.rcopy(path.join(src,asset),path.join(build,path.basename(asset)));
+});
 
 if (!('layouts' in config)) {
   config.layouts = './layouts'
@@ -54,7 +56,7 @@ if (!('layouts' in config)) {
 eta.configure({views: src + '/' + config.layouts});
 
 config.pages.forEach(page => {
-  page.footer = config.footer;
+  page.footer = config.footer + ` Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.1.1`;
   if (!('title' in page)) {
     page.title = config.title;
   }

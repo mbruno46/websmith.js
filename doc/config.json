@@ -1,7 +1,7 @@
 {
   "title": "websmith.js",
   "build": "./build",
-  "assets": "../themes/flatsy/assets",
+  "assets": ["./assets","../themes/flatsy/assets", "../themes/default/assets"],
   "navbar": {
     "name": "websmith.js",
     "items": [{
@@ -13,7 +13,7 @@
       "name": "Get Started"
     }]
   },
-  "layouts": "../themes/flatsy/layouts",
+  "layouts": "../themes/default/layouts",
   "pages": [
     {
       "name": "index.html",

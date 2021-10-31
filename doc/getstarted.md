@@ -11,7 +11,7 @@ of the website is going to be.
 {
   "title": "my website",
   "build": "./build",
-  "assets": "./themes/superhero/assets",
+  "assets": ["./themes/default/assets"],
   "navbar": {
     "name": "My New Website",
     "items": [{
@@ -19,7 +19,7 @@ of the website is going to be.
       "name": "Home"
     }]
   },
-  "layouts": "./themes/superhero/layouts",
+  "layouts": "./themes/default/layouts",
   "pages": [
     {
       "name": "index.html",
