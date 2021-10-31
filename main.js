@@ -17,6 +17,9 @@ function highlight(code, language) {
 renderer.code = function(code, language) {
   return `<pre><code class="language-${language} hljs">${highlight(code,language)}</code></pre>`
 }
+renderer.table = function(header, body) {
+  return `<table class="table table-hover">${header}${body}</table>`
+}
 
 marked.setOptions({
   renderer: renderer,

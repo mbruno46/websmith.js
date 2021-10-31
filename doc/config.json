@@ -11,6 +11,10 @@
     {
       "link": "getstarted.html",
       "name": "Get Started"
+    },
+    {
+      "link": "checks.html",
+      "name": "Checks"
     }]
   },
   "layouts": "../themes/default/layouts",
@@ -24,6 +28,11 @@
     {
       "name": "getstarted.html",
       "body": "getstarted.md",
+      "layout": "layout"
+    },
+    {
+      "name": "checks.html",
+      "body": "checks.md",
       "layout": "layout"
     }
   ],
