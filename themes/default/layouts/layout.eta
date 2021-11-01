@@ -37,8 +37,8 @@
       <%~ it.body %>
     </div>
 
-    <footer class="nav navbar-dark bg-primary">
-      <div class="container">
+    <footer class="navbar navbar-dark bg-primary">
+      <div class="container navbar-text">
         <%~ it.footer %>
 	<span>Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.1.1</span>
       </div>
