@@ -1,5 +1,4 @@
 
-<img src="./assets/img/image.png" alt="Smith" style="width: 100%;">
 
 ***
 

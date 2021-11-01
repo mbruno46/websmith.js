@@ -22,6 +22,7 @@
     {
       "name": "index.html",
       "desc": "A minimalistic static website generator based on Node.js",
+      "logo": "./assets/img/image.png",
       "body": "index.md",
       "layout": "home"
     },
