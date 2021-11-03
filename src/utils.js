@@ -45,7 +45,13 @@ function write(dst, txt) {
   });
 }
 
+function version() {
+  let tmp = JSON.parse(read(`${__dirname}/../package.json`,'b'));
+  return tmp.version;
+}
+
 exports.write = write;
 exports.read = read;
 exports.mkdir = mkdir;
 exports.rcopy = rcopy;
+exports.version = version;

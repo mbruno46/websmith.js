@@ -11,7 +11,6 @@
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-
   </head>
   <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
@@ -24,9 +23,24 @@
         <div class="collapse navbar-collapse" id="navbarColor" style="">
           <ul class="navbar-nav mr-auto">
             <% it.navbar.items.forEach(function(item){ %>
-              <li class="nav-item">
-                <a class="nav-link <% if (item.link==it.name) { %> active <% } %>" href="<%= item.link %>"><%= item.name %></a>
-              </li>
+              <% if (item.dropdown === undefined){ %>
+                <li class="nav-item">
+                  <a class="nav-link <% if (item.link==it.name) { %> active <% } %>" href="<%= item.link %>"><%= item.name %></a>
+                </li>
+              <% } else { %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" 
+                    data-bs-toggle="dropdown" href="<%= item.link %>" role="button" 
+                    aria-haspopup="true" aria-expanded="false">
+                      <%= item.name %>
+                  </a>
+                  <div class="dropdown-menu">
+                  <% item.dropdown.forEach(function(ditem) { %>
+                    <a class="dropdown-item <% if (ditem.link==it.name) { %> active <% } %>" href="<%= ditem.link %>"><%= ditem.name %></a>
+                  <% }) %>
+                  </div>
+                </li>
+              <% } %>
             <% }) %>
           </ul>
         </div>
@@ -40,7 +54,7 @@
     <footer class="navbar navbar-dark bg-primary">
       <div class="container navbar-text">
         <%~ it.footer %>
-	<span>Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.1.1</span>
+	      <span>Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> <%= it.websmith_version %></span>
       </div>
     </footer>
 
