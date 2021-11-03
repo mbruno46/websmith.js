@@ -1,0 +1,40 @@
+<% layout('./layout') %>
+
+<div class="page-header">
+  <div class="row">
+    <div class="col-lg-2">
+      <% if(it.picture !== undefined) { %>
+      <img src="<%= it.picture %>" style="width: 100%; max-width: 240px;">
+      <% } %> 
+    </div>
+    <div class="col-lg-8">
+      <h1><%= it.title %></h1>
+      <p class="lead"><%= it.desc %></p>
+      <% it.contacts.forEach(function(val){ %>
+        <%~ val %><br>
+      <% }) %>
+    </div>
+  </div>
+  <div style="height: 16px"></div>
+  <div class="row">
+    <% if (it.inspirehep !== undefined) { %>
+    <div class="col-md-2">
+      <a href="https://inspirehep.net/authors/<%= it.inspirehep %>?ui-citation-summary=true"><img src="https://help.inspirehep.net/wp-content/uploads/2021/09/Favicon_inspire_Transp_White.png" style="width: 100%; max-width: 128px; background-color: #001529"></a>
+    </div>
+    <% } %>
+    <% if (it.orcid !== undefined) { %>
+    <div class="col-md-2">
+      <a href="https://orcid.org/<%= it.orcid %>"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/ORCID_logo.svg" style="width: 100%; max-width: 128px;"></a>
+    </div>
+    <% } %>
+    <% if (it.scopus !== undefined) { %>
+    <div class="col-md-2">
+      <a href="https://www.scopus.com/authid/detail.uri?authorId=<%= it.scopus %>"><img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Scopus_logo.svg" style="width: 100%; max-width: 128px;"></a>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<div class="bs-docs-section clearfix">
+  <%~ it.body %>
+</div>

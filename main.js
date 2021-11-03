@@ -71,7 +71,7 @@ config.pages.forEach(page => {
   if ('navbar' in config) {page.navbar = config.navbar;}
 
   page.websmith_version = utils.version();
-  
+
   let html = eta.render(`<% layout('${page.layout}') %> \n<%~ it.body %>`, page);
   // let html = eta.renderFile(src + '/' + page.layout, page);
   // let html = eta.render(utils.read(src + '/' + page.layout + '.eta'), page)
