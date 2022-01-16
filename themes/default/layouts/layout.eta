@@ -16,12 +16,12 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
       <div class="container">
         <a class="navbar-brand" href="#"><%= it.navbar.name %></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor" style="">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav me-auto">
             <% it.navbar.items.forEach(function(item){ %>
               <% if (item.dropdown === undefined){ %>
                 <li class="nav-item">
@@ -58,7 +58,7 @@
       </div>
     </footer>
 
-    <script src="_static/jquery.min.js"></script>
-    <script src="_static/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
