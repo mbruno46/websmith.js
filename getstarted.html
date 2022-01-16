@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>websmith.js</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" type="text/css" />
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#">websmith.js</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor" style="">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  active " href="getstarted.html">Get Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="checks.html">Checks</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <h1 id="get-started">Get started</h1>
+      <p>To get started with <code>websmith.js</code> you need one file</p>
+      <ul>
+        <li><code>config.json</code>: configuration file used to generate the various webapges</li>
+      </ul>
+      <p>The configuration file tells the library what the basic structure and content
+        of the website is going to be.</p>
+      <pre><code class="language-javascript hljs">{
+  <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;my website&quot;</span>,
+  <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;./build&quot;</span>,
+  <span class="hljs-string">&quot;assets&quot;</span>: [<span class="hljs-string">&quot;./themes/default/assets&quot;</span>],
+  <span class="hljs-string">&quot;navbar&quot;</span>: {
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;My New Website&quot;</span>,
+    <span class="hljs-string">&quot;items&quot;</span>: [{
+      <span class="hljs-string">&quot;link&quot;</span>: <span class="hljs-string">&quot;index.html&quot;</span>,
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Home&quot;</span>
+    }]
+  },
+  <span class="hljs-string">&quot;layouts&quot;</span>: <span class="hljs-string">&quot;./themes/default/layouts&quot;</span>,
+  <span class="hljs-string">&quot;pages&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;index.html&quot;</span>,
+      <span class="hljs-string">&quot;desc&quot;</span>: <span class="hljs-string">&quot;Some catch phrase goes here&quot;</span>,
+      <span class="hljs-string">&quot;body&quot;</span>: <span class="hljs-string">&quot;The content of the body&quot;</span>,
+      <span class="hljs-string">&quot;layout&quot;</span>: <span class="hljs-string">&quot;home&quot;</span>
+    }
+  ],
+  <span class="hljs-string">&quot;footer&quot;</span>: <span class="hljs-string">&quot;Copyright © year author.&quot;</span>
+}</code></pre>
+      <p>In this example above, we can see how <code>websmith.js</code> works:</p>
+      <ul>
+        <li>
+          <p><code>build</code> specifies the build directory;</p>
+        </li>
+        <li>
+          <p><code>title</code> and <code>footer</code> are mandatory; if the title field is not present inside
+            one of the pages, the global title is used for every webpage;</p>
+        </li>
+        <li>
+          <p>the assets contain the basic <code>.css</code> and <code>.js</code> files that define the style of
+            the webpage. The user can add images for examples to a subfolder called <code>img</code> and
+            load them in the Markdown source files; the program will copy the content in the build
+            directory;</p>
+        </li>
+        <li>
+          <p>the layouts contain the structure of the webpage, and their content is filled
+            via the <code>body</code> field, which can be either a string of HTML, or a Markdown file
+            such as <code>index.md</code>;</p>
+        </li>
+        <li>
+          <p><code>navbar</code> defines the structure of the navigatio bar; each item must contain a
+            <code>link</code> to a webpage, and a <code>name</code> to be displayde forr it;
+          </p>
+        </li>
+        <li>
+          <p>webpages are created following the content of the <code>pages</code> field; for each
+            entry a name, body and layout must be specified;</p>
+        </li>
+        <li>
+          <p>special layouts, such as <code>home</code> may require additional fields; for the home layout
+            the user can provide a description and logo;</p>
+        </li>
+      </ul>
+      <hr>
+      <h2 id="custom-templates">Custom templates</h2>
+      <p>Custom templates can be easily used by specifying the proper <code>assets</code> and <code>layouts</code>
+        directories. They are based on the <a href="https://eta.js.org">ETA</a> templating engine and
+        each field defined in the template must be matched by the
+        corresponding entry in the configure file</p>
+      <pre><code class="language-html hljs">  ...
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&lt;%= it.logo %&gt;&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 1em;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  ...</code></pre><pre><code class="language-javascript hljs">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [
+    ...
+    {
+      ...
+      <span class="hljs-string">&quot;logo&quot;</span>: <span class="hljs-string">&quot;assets/img/logo.png&quot;</span>
+    }
+  ]
+}</code></pre>
+    </div>
+
+    <footer class="navbar navbar-dark bg-primary">
+      <div class="container navbar-text">
+        Copyright © 2021 Mattia Bruno. <span>Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.2.0</span>
+      </div>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>websmith.js</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" type="text/css" />
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#">websmith.js</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor" style="">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link  active " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="getstarted.html">Get Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="checks.html">Checks</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="page-header">
+        <div class="row">
+          <div class="col-lg-2">
+            <img src="./assets/img/image.png" style="width: 100%; max-width: 256px">
+          </div>
+          <div class="col-lg-8">
+            <h1>
+              websmith.js </h1>
+            <p class="lead">A minimalistic static website generator based on Node.js</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bs-docs-section clearfix">
+
+        <hr>
+        <ul>
+          <li><strong>Source code</strong>: <a href="https://github.com/mbruno46/websmith.js/">https://github.com/mbruno46/websmith.js/</a></li>
+          <li><strong>Bug reports</strong> <a href="https://github.com/mbruno46/websmith.js/issues">https://github.com/mbruno46/websmith.js/issues</a></li>
+        </ul>
+        <h1 id="installation">Installation</h1>
+        <p>The package can be downloaded from <a href="https://github.com/mbruno46/websmith.js/">GitHub</a>
+          using</p>
+        <pre><code class="language-bash hljs">git <span class="hljs-built_in">clone</span> https://github.com/mbruno46/websmith.js.git</code></pre>
+        <p>To generate this documentation check the
+          <a href="https://github.com/mbruno46/websmith.js/examples">examples</a> directory and type
+        </p>
+        <pre><code class="language-bash hljs"><span class="hljs-built_in">cd</span> websmith.js
+node index.js ./examples/config.json</code></pre>
+        <div class="alert alert-dismissible alert-warning">
+          <h4 class="alert-heading">Warning!</h4>
+          Node.js must be installed in the system.
+        </div>
+      </div>
+    </div>
+
+    <footer class="navbar navbar-dark bg-primary">
+      <div class="container navbar-text">
+        Copyright © 2021 Mattia Bruno. <span>Created using <a href="https://github.com/mbruno46/websmith.js">websmith.js</a> 0.2.0</span>
+      </div>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+
+</html>
